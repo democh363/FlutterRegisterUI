@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utilities/constants.dart';
+import 'package:flutter_app/StringValues/stringValues.dart';
 
 class LoginScreenState extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _LoginScreenStateState extends State<LoginScreenState> {
 				crossAxisAlignment: CrossAxisAlignment.start,
 				children:<Widget>[
 					Text(
-						'Email',
+						eMailText,
 						style: kLabelStyle,
 					),
 					SizedBox(height: 10.0),
@@ -28,7 +29,7 @@ class _LoginScreenStateState extends State<LoginScreenState> {
 							keyboardType: TextInputType.emailAddress,
 							style: TextStyle(
 								color:Colors.white,
-								fontFamily: 'OpenSans'),
+								fontFamily: customFontFamiliy),
 							decoration: InputDecoration(
 								border:InputBorder.none,
 								contentPadding: EdgeInsets.only(top:14.0),
@@ -36,7 +37,7 @@ class _LoginScreenStateState extends State<LoginScreenState> {
 									Icons.email,
 									color: Colors.white,
 								),
-								hintText: 'Enter your Email',
+								hintText: eMailTextHint,
 								hintStyle: kHintTextStyle,
 							),
 						),
@@ -51,7 +52,7 @@ Widget _buildPasswordTF()
 				crossAxisAlignment: CrossAxisAlignment.start,
 				children:<Widget>[
 					Text(
-						'Password',
+						passWordText,
 						style: kLabelStyle,
 					),
 					SizedBox(height: 10.0),
@@ -64,7 +65,7 @@ Widget _buildPasswordTF()
 							keyboardType: TextInputType.emailAddress,
 							style: TextStyle(
 								color:Colors.white,
-								fontFamily: 'OpenSans',
+								fontFamily: customFontFamiliy,
 								),
 							decoration: InputDecoration(
 								border:InputBorder.none,
@@ -73,7 +74,7 @@ Widget _buildPasswordTF()
 									Icons.lock,
 									color: Colors.white,
 								),
-								hintText: 'Enter your Password',
+								hintText: passWordTextHint,
 								hintStyle: kHintTextStyle,
 							),
 						),
@@ -90,7 +91,7 @@ Widget _buildPasswordTF()
 				onPressed: () => print("Forgot Password Button Pressed"),
 				padding: EdgeInsets.only(right:0.0),
 				child: Text(
-					'Forget Password?',
+				  forgotPasswordText,
 					style:kLabelStyle,
 				),
 			),
@@ -116,7 +117,7 @@ Widget _buildPasswordTF()
 								} ,)
 						),
 						Text(
-							'Remember me',
+							rememberMeText,
 							style:kLabelStyle,
 						),
 					],
@@ -138,14 +139,14 @@ Widget _buildPasswordTF()
 				),
 				color: Colors.white,
 				child: Text(
-					'LOGIN',
+					loginText,
 					style:TextStyle(
 						color:Color(0xFF527DAA),
 						letterSpacing: 1.5,
 						fontSize: 18.0,
 						fontWeight: FontWeight.bold,
-						fontFamily: 'OpenSans')),
-			)
+						fontFamily: customFontFamiliy)),
+			),
 		);
  }
 
@@ -165,6 +166,37 @@ Widget _buildSignInWithText()
 			],
 		);
 }
+
+
+Widget _buildSignIn()
+{
+  return GestureDetector(
+        onTap:() => print('Sign up Button Pressed'),
+        child: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text:haveNotAccoundText,
+                style:TextStyle(
+                  color:Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              TextSpan(
+                text:signInText,
+                style:TextStyle(
+                  color:Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -200,10 +232,10 @@ Widget _buildSignInWithText()
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Sign In',
+                        appName,
                         style: TextStyle(
                           color: Colors.white,
-                          fontFamily:'OpenSans',
+                          fontFamily:customFontFamiliy,
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -215,32 +247,8 @@ Widget _buildSignInWithText()
 											_buildForgotPasswordBtn(),
 											_buildRememberMeCheckBox(),
 											_buildLoginBtn(),
-											_buildSignInWithText(),
-                      GestureDetector(
-                        onTap:() => print('Sign up Button Pressed'),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text:'Don\'t have an Account? ',
-                                style:TextStyle(
-                                  color:Colors.white,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              TextSpan(
-                                text:'Sign In',
-                                style:TextStyle(
-                                  color:Colors.white,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+											//_buildSignInWithText(),
+                      _buildSignIn(),
                     ],
                   ),
                 ),
