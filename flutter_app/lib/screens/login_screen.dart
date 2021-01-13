@@ -231,6 +231,7 @@ Widget _buildSignIn()
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      SizedBox(height: 65.0),
                       Text(
                         appName,
                         style: TextStyle(
